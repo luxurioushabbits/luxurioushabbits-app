@@ -4,7 +4,7 @@ FROM node:22-alpine AS builder
 WORKDIR /app
 
 # Increase Node memory for build
-ENV NODE_OPTIONS="--max-old-space-size=2048"
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 
 # Copy package files and patches
 COPY package.json pnpm-lock.yaml ./
@@ -25,6 +25,7 @@ FROM node:22-alpine
 WORKDIR /app
 
 ENV NODE_ENV=production
+ENV NODE_OPTIONS=""
 
 # Copy package files and patches
 COPY package.json pnpm-lock.yaml ./
