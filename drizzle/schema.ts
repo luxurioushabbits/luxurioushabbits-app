@@ -31,6 +31,9 @@ export const users = mysqlTable("users", {
   profilePhotoKey: text("profilePhotoKey"), // S3 key for user profile photo
   isWholesale: boolean("isWholesale").default(false).notNull(), // wholesale account flag
   wholesaleApprovedAt: timestamp("wholesaleApprovedAt"), // when wholesale was granted
+  passwordHash: text("passwordHash"), // bcrypt hash for email/password auth
+  resetToken: varchar("resetToken", { length: 128 }), // password reset token
+  resetTokenExpiry: timestamp("resetTokenExpiry"), // when reset token expires
 });
 
 export type User = typeof users.$inferSelect;

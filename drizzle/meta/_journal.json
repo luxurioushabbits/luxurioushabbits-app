@@ -393,6 +393,13 @@
       "when": 1782349860482,
       "tag": "0055_dry_shockwave",
       "breakpoints": true
+    },
+    {
+      "idx": 56,
+      "version": "5",
+      "when": 1784350210019,
+      "tag": "0056_loud_starjammers",
+      "breakpoints": true
     }
   ]
 }

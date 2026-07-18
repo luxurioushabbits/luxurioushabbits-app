@@ -40,6 +40,10 @@ import ShareExperience from "./pages/ShareExperience";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import AffiliateDashboard from "./pages/AffiliateDashboard";
 import CryptoPayment from "./pages/CryptoPayment";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 import Dropship from "./pages/Dropship";
 import CartDrawer from "./components/CartDrawer";
 import EmailCapturePopup from "./components/EmailCapturePopup";
@@ -710,6 +714,10 @@ function Router() {
         <Route path="/share/:orderNumber" component={ShareExperience} />
         <Route path="/affiliate" component={AffiliateDashboard} />
         <Route path="/pay/crypto" component={CryptoPayment} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path="/forgot-password" component={ForgotPassword} />
+        <Route path="/reset-password" component={ResetPassword} />
         <Route path="/admin">{() => <AdminGuard><Admin /></AdminGuard>}</Route>
         <Route path="/404" component={NotFound} />
         <Route component={NotFound} />

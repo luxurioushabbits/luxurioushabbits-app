@@ -41,6 +41,7 @@ import { strainCommentsRouter } from "./routers/strainComments";
 import { profileRouter } from "./routers/profile";
 import { chatRouter } from "./routers/chat";
 import { adminMessagesRouter } from "./routers/adminMessages";
+import { authRouter } from "./auth";
 
 export const appRouter = router({
   system: systemRouter,
@@ -79,30 +80,7 @@ export const appRouter = router({
   chat: chatRouter,
   adminMessages: adminMessagesRouter,
 
-  auth: router({
-    me: publicProcedure.query(opts => opts.ctx.user ?? null), // Return null for unauthenticated users, don't throw
-    logout: publicProcedure.mutation(({ ctx }) => {
-      const cookieOptions = getSessionCookieOptions(ctx.req);
-      ctx.res.clearCookie(COOKIE_NAME, { ...cookieOptions, maxAge: -1 });
-      return { success: true } as const;
-    }),
-    updateProfile: protectedProcedure
-      .input(z.object({
-        phone: z.string().max(30).optional(),
-        smsOptIn: z.boolean().optional(),
-      }))
-      .mutation(async ({ ctx, input }) => {
-        const db = await getDb();
-        if (!db) throw new Error("Database unavailable");
-        const updateData: Record<string, unknown> = {};
-        if (input.phone !== undefined) updateData.phone = input.phone || null;
-        if (input.smsOptIn !== undefined) updateData.smsOptIn = input.smsOptIn;
-        if (Object.keys(updateData).length > 0) {
-          await db.update(users).set(updateData).where(eq(users.id, ctx.user.id));
-        }
-        return { success: true };
-      }),
-  }),
+  auth: authRouter,
 
   newsletter: router({
     subscribe: publicProcedure

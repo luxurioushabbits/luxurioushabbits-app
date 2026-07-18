@@ -22,7 +22,7 @@ const redirectToLoginIfUnauthorized = (error: unknown) => {
 
   if (!isUnauthorized) return;
 
-  window.location.href = getLoginUrl();
+  // Don't auto-redirect — most pages are public. Protected pages handle their own redirect via useAuth.
 };
 
 queryClient.getQueryCache().subscribe(event => {
