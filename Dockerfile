@@ -27,16 +27,11 @@ WORKDIR /app
 ENV NODE_ENV=production
 ENV NODE_OPTIONS=""
 
-# Copy package files and patches
-COPY package.json pnpm-lock.yaml ./
-COPY patches/ ./patches/
-
-# Install pnpm and production dependencies only
-RUN npm install -g pnpm && pnpm install --no-frozen-lockfile --prod
-
-# Copy built application from builder
+# Copy built application and node_modules from builder
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/drizzle ./drizzle
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
 # Expose port (Railway uses PORT env var)
 EXPOSE 3000
