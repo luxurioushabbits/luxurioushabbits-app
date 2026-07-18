@@ -6,8 +6,9 @@ WORKDIR /app
 # Increase Node memory for build
 ENV NODE_OPTIONS="--max-old-space-size=512"
 
-# Copy package files
+# Copy package files and patches
 COPY package.json pnpm-lock.yaml ./
+COPY patches/ ./patches/
 
 # Install pnpm and dependencies
 RUN npm install -g pnpm && pnpm install --no-frozen-lockfile
@@ -25,8 +26,9 @@ WORKDIR /app
 
 ENV NODE_ENV=production
 
-# Copy package files
+# Copy package files and patches
 COPY package.json pnpm-lock.yaml ./
+COPY patches/ ./patches/
 
 # Install pnpm and production dependencies only
 RUN npm install -g pnpm && pnpm install --no-frozen-lockfile --prod
