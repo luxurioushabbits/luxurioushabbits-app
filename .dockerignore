@@ -1,0 +1,12 @@
+node_modules
+.git
+.manus-logs
+*.md
+!README.md
+.env*
+dist
+coverage
+*.zip
+video_*
+browser_html
+screenshots
