@@ -1,0 +1,1 @@
+ALTER TABLE `wholesale_leads` ADD `preferredContact` enum('email','phone','text','whatsapp') DEFAULT 'email' NOT NULL;

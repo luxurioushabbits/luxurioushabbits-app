@@ -1,0 +1,1 @@
+ALTER TABLE `active_sessions` ADD `firstSeen` timestamp DEFAULT (now()) NOT NULL;

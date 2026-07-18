@@ -1,0 +1,1 @@
+ALTER TABLE `vendors` ADD `hideVendor` boolean DEFAULT false NOT NULL;

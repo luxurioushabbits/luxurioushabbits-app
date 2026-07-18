@@ -1,0 +1,21 @@
+{
+  "name": "Luxurious Habbits",
+  "short_name": "LH",
+  "description": "Premium Farm Bill compliant THCA flower. Shop Indica, Sativa & Hybrid hemp strains. Third-party lab tested, discreet shipping nationwide.",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0a0a0a",
+  "theme_color": "#bf5fff",
+  "categories": ["shopping", "lifestyle"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [],
+  "prefer_related_applications": false
+}

@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Private / transactional pages — no indexing
+Disallow: /admin
+Disallow: /admin/
+Disallow: /account
+Disallow: /account/
+Disallow: /checkout
+Disallow: /checkout/
+Disallow: /cart
+Disallow: /api/
+Disallow: /api/trpc/
+
+# Crawl delay (be polite)
+Crawl-delay: 2
+
+Sitemap: https://www.luxurioushabbits.com/sitemap.xml

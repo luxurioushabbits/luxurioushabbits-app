@@ -1,0 +1,1 @@
+ALTER TABLE `loyalty_points` MODIFY COLUMN `reason` enum('purchase','review_approved','subscription_bonus','redemption','admin_adjustment','signup_bonus','admin_gift') NOT NULL;

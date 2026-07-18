@@ -1,0 +1,1 @@
+ALTER TABLE `strain_review_comments` ADD `verifiedPurchase` boolean DEFAULT false NOT NULL;

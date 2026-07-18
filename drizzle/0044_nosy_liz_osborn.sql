@@ -1,0 +1,1 @@
+ALTER TABLE `wholesale_leads` ADD `preferredPayment` enum('bank_transfer','check','credit_card','crypto','net_terms','other') DEFAULT 'bank_transfer';

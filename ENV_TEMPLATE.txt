@@ -1,0 +1,92 @@
+# ============================================================
+# LUXURIOUS HABBITS — Environment Variables Template
+# Rename this file to .env and fill in your real values.
+# NEVER commit .env to version control.
+# ============================================================
+
+# ── Core / Platform ───────────────────────────────────────────────────────────
+NODE_ENV=development
+PORT=3000
+DATABASE_URL=mysql://user:password@host:3306/dbname
+JWT_SECRET=your-random-secret-min-32-chars
+
+# Manus OAuth (required for user login)
+VITE_APP_ID=your-manus-app-id
+OAUTH_SERVER_URL=https://oauth.manus.im
+VITE_OAUTH_PORTAL_URL=https://portal.manus.im
+OWNER_OPEN_ID=your-owner-open-id
+OWNER_NAME=Austin
+
+# Manus Built-in APIs (LLM, storage, notifications)
+BUILT_IN_FORGE_API_URL=https://api.manus.im
+BUILT_IN_FORGE_API_KEY=your-forge-api-key
+VITE_FRONTEND_FORGE_API_KEY=your-frontend-forge-api-key
+VITE_FRONTEND_FORGE_API_URL=https://api.manus.im
+
+# ── App Identity ──────────────────────────────────────────────────────────────
+VITE_APP_TITLE=Luxurious Habbits
+VITE_APP_LOGO=/manus-storage/logo_14152948.png
+APP_URL=https://www.luxurioushabbits.com
+
+# ── Email (Resend) ─────────────────────────────────────────────────────────────
+# resend.com → API Keys
+RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# ── Payments: PayPal ──────────────────────────────────────────────────────────
+# developer.paypal.com → My Apps & Credentials
+PAYPAL_CLIENT_ID=your-paypal-client-id
+PAYPAL_CLIENT_SECRET=your-paypal-client-secret
+PAYPAL_ENVIRONMENT=sandbox
+VITE_PAYPAL_CLIENT_ID=your-paypal-client-id
+
+# ── Payments: Crypto (NOWPayments) ────────────────────────────────────────────
+# nowpayments.io → API Keys
+NOWPAYMENTS_API_KEY=your-nowpayments-api-key
+NOWPAYMENTS_IPN_SECRET=your-nowpayments-ipn-secret
+NOWPAYMENTS_BTC_WALLET=your-bitcoin-wallet-address
+NOWPAYMENTS_ETH_WALLET=your-ethereum-wallet-address
+VITE_CRYPTO_PAYMENTS_ENABLED=false
+
+# ── Payments: WalletConnect (Web3) ────────────────────────────────────────────
+# cloud.walletconnect.com → New Project
+VITE_WALLETCONNECT_PROJECT_ID=your-walletconnect-project-id
+
+# ── Payments: Authorize.Net (optional) ───────────────────────────────────────
+# developer.authorize.net
+AUTHORIZE_NET_API_LOGIN_ID=your-authnet-login-id
+AUTHORIZE_NET_TRANSACTION_KEY=your-authnet-transaction-key
+AUTHORIZE_NET_ENVIRONMENT=sandbox
+VITE_AUTHORIZE_NET_API_LOGIN_ID=your-authnet-login-id
+VITE_AUTHORIZE_NET_CLIENT_KEY=your-authnet-client-key
+VITE_AUTHORIZE_NET_ENVIRONMENT=sandbox
+
+# ── SMS (Twilio) ──────────────────────────────────────────────────────────────
+# console.twilio.com
+TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TWILIO_AUTH_TOKEN=your-twilio-auth-token
+TWILIO_FROM_NUMBER=+15551234567
+
+# ── Product Fulfillment: TopShelf ─────────────────────────────────────────────
+TOPSHELF_API_KEY=your-topshelf-api-key
+TOPSHELF_API_URL=https://api.topshelf.com
+TOPSHELF_URL=https://topshelf.com
+TOPSHELF_VENDOR_ID=your-vendor-id
+TOPSHELF_COUPON=your-coupon-code
+TOPSHELF_WC_CONSUMER_KEY=ck_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+TOPSHELF_WC_CONSUMER_SECRET=cs_xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+# ── Product Fulfillment: Crowdship (Dropshipping) ─────────────────────────────
+# crowdship.io → API Settings
+CROWDSHIP_API_KEY=your-crowdship-api-key
+CROWDSHIP_SECRET_KEY=your-crowdship-secret-key
+
+# ── SEO & Analytics ───────────────────────────────────────────────────────────
+VITE_GOOGLE_SITE_VERIFICATION=your-google-verification-code
+VITE_GA4_MEASUREMENT_ID=G-XXXXXXXXXX
+VITE_ANALYTICS_ENDPOINT=https://analytics.manus.im
+VITE_ANALYTICS_WEBSITE_ID=your-website-id
+INDEXNOW_KEY=your-indexnow-key
+
+# ── Google APIs ───────────────────────────────────────────────────────────────
+# Paste entire service account JSON as single line (for Google Business Profile / Indexing API)
+GOOGLE_SERVICE_ACCOUNT_JSON={"type":"service_account","project_id":"..."}

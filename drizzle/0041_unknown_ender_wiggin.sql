@@ -1,0 +1,1 @@
+ALTER TABLE `active_sessions` ADD `deviceType` enum('mobile','tablet','desktop') DEFAULT 'desktop';
