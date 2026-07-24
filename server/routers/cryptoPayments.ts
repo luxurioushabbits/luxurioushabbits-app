@@ -1,13 +1,13 @@
 /**
  * NOWPayments Crypto Checkout Router
  *
- * Supports BTC, ETH, DOGE payments via NOWPayments API.
+ * Supports BTC and ETH payments via NOWPayments API.
  * Hidden behind VITE_CRYPTO_PAYMENTS_ENABLED feature flag.
  *
  * Flow:
- *  1. Customer places order → gets order ID
+ *  1. Customer places order â gets order ID
  *  2. Customer visits /pay/crypto?order=LH-XXXXX
- *  3. They pick a coin → createPayment is called → NOWPayments returns a unique deposit address + exact amount
+ *  3. They pick a coin â createPayment is called â NOWPayments returns a unique deposit address + exact amount
  *  4. Customer sends exact amount to that address (read-only, cannot edit)
  *  5. NOWPayments POSTs IPN webhook to /api/crypto/ipn when payment confirms
  *  6. We verify HMAC signature, mark order as paid
@@ -31,7 +31,6 @@ const BTC_WALLET = process.env.NOWPAYMENTS_BTC_WALLET ?? "";
 const COIN_CONFIG: Record<string, { payCurrency: string; payoutAddress: string }> = {
   btc: { payCurrency: "btc", payoutAddress: BTC_WALLET },
   eth: { payCurrency: "eth", payoutAddress: ETH_WALLET },
-  doge: { payCurrency: "doge", payoutAddress: ETH_WALLET }, // DOGE uses same ETH-compatible wallet on NOWPayments
 };
 
 async function nowpaymentsRequest(path: string, method = "GET", body?: object) {
@@ -62,7 +61,7 @@ export const cryptoPaymentsRouter = router({
     .input(
       z.object({
         orderIdNum: z.number().int().positive(),
-        coin: z.enum(["btc", "eth", "doge"]),
+        coin: z.enum(["btc", "eth"]),
       })
     )
     .query(async ({ input }) => {
@@ -97,13 +96,13 @@ export const cryptoPaymentsRouter = router({
 
   /**
    * Create a NOWPayments payment for an order.
-   * Returns a unique deposit address and exact amount — both read-only for the customer.
+   * Returns a unique deposit address and exact amount â both read-only for the customer.
    */
   createPayment: publicProcedure
     .input(
       z.object({
         orderIdNum: z.number().int().positive(),
-        coin: z.enum(["btc", "eth", "doge"]),
+        coin: z.enum(["btc", "eth"]),
       })
     )
     .mutation(async ({ input }) => {
@@ -220,7 +219,7 @@ export const cryptoPaymentsRouter = router({
 });
 
 /**
- * IPN Webhook handler — called by NOWPayments when a payment status changes.
+ * IPN Webhook handler â called by NOWPayments when a payment status changes.
  * Mounted at POST /api/crypto/ipn in server/_core/index.ts
  */
 export async function handleCryptoIPN(req: any, res: any) {
@@ -255,7 +254,7 @@ export async function handleCryptoIPN(req: any, res: any) {
 
     const { payment_id, payment_status, order_id } = req.body;
 
-    console.log(`[CryptoIPN] Payment ${payment_id} for order ${order_id} → ${payment_status}`);
+    console.log(`[CryptoIPN] Payment ${payment_id} for order ${order_id} â ${payment_status}`);
 
     // Mark order as paid on confirmed/finished status
     if (payment_status === "finished" || payment_status === "confirmed") {
